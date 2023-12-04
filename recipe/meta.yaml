@@ -35,11 +35,11 @@ test:
     - pytest -vv tests  # [py<311]
     # seems from the tests that jinxed 1.2.0 does not support well compability tests 
     # with ncurses >= 6.3, ncurses < 6.3 is not available for py>=311
-    - pytest -k "not test_tparm.py" -vv  # [py>=311]
+    - pytest -k "not test_tparm.py" -vv  # [py>=311 or not win]
   requires:
     - pip
     - pytest
-    - ncurses <6.3 # [py<311]
+    - ncurses <6.3 # [py<311 or not win]
 
 
 about:

@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  Skip: True  # [py<38]
+  Skip: True  # [py<35]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -20,6 +20,7 @@ requirements:
     - pip
     - python
     - wheel
+    - setuptools
   run:
     - ansicon  # [win]
     - python
@@ -32,14 +33,12 @@ test:
     - jinxed.terminfo
   commands:
     - pip check
-    - pytest -vv tests  # [py<311]
-    # seems from the tests that jinxed 1.2.0 does not support well compability tests 
-    # with ncurses >= 6.3, ncurses < 6.3 is not available for py>=311
-    - pytest -k "not test_tparm.py" -vv  # [py>=311 or not win]
+    # skipping test_tparm.py as not comatible with  ncurses >= 6.4
+    - pytest -k "not test_tparm.py" -vv
   requires:
     - pip
     - pytest
-    - ncurses <6.3 # [py<311 or not win]
+    - ncurses # [not win]
 
 
 about:
@@ -51,7 +50,7 @@ about:
   license_family: OTHER
   license: MPL-2.0
   license_file: LICENSE
-  doc_url: https://jinxed.readthedocs.io/en/stable/
+  doc_url: https://jinxed.readthedocs.io/
   dev_url: https://github.com/Rockhopper-Technologies/jinxed/
 
 extra:

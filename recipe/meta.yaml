@@ -32,15 +32,14 @@ test:
     - jinxed.terminfo
   commands:
     - pip check
-    # skipping test_tparm.py as not comatible with  ncurses >= 6.4
-    - pytest -k "not test_tparm.py" -vv
+    - pytest -vv
   requires:
     - pip
     - pytest
     - ncurses  # [not win]
 
 about:
-  home: https://pypi.org/project/jinxed/
+  home: https://pypi.org/project/jinxed
   summary: Jinxed Terminal Library
   description: |
     Jinxed is an implementation of a subset of the Python curses library. It provides pure Python implementations of
@@ -48,8 +47,8 @@ about:
   license_family: OTHER
   license: MPL-2.0
   license_file: LICENSE
-  doc_url: https://jinxed.readthedocs.io/
-  dev_url: https://github.com/Rockhopper-Technologies/jinxed/
+  doc_url: https://jinxed.readthedocs.io
+  dev_url: https://github.com/Rockhopper-Technologies/jinxed
 
 extra:
   recipe-maintainers:
